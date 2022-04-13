@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "AQIMonitoring",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
