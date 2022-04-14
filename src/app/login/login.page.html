@@ -1,9 +1,61 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="loginData">
+    <ion-list>
+      <ion-item lines="full" class="ion-margin">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" formControlName="email" required></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <span
+        class="errmsg"
+        *ngIf="loginData.get('email').hasError('required') && loginData.get('email').touched"
+        >Email shoudn't be empty.</span
+      >
+      <span
+        class="errmsg"
+        *ngIf="loginData.get('email').hasError('email') && loginData.get('email').touched"
+        >Enter correct email.</span
+      >
+      </div>
+      <ion-item lines="full" class="ion-margin">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="text" formControlName="password" required></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <span
+        class="errmsg"
+        *ngIf="loginData.get('password').hasError('required') && loginData.get('password').touched"
+        >Password shoudn't be empty.</span
+      ><br>
+      <span
+        class="errmsg"
+        *ngIf="loginData.get('password').hasError('minlength') && loginData.get('password').touched"
+        >Password shoud contain atleast 8 characters.</span
+      ><br>
+      <span
+        class="errmsg"
+        *ngIf="loginData.get('password').hasError('pattern') && loginData.get('password').touched"
+        >Must contain uppercase, lowecase, number and special character.</span
+      >
+      </div>
+    </ion-list>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          type="submit"
+          color="primary"
+          expand="block"
+          (click)="login()"
+          [disabled]="loginData.invalid"
+          >Sign In</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </form>
 </ion-content>
