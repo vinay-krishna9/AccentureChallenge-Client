@@ -17,6 +17,7 @@
       <ion-label>
         <h2>{{ country.country }}</h2>
         <h3>Population: {{ country.population | number }}</h3>
+        <h3>AQI: {{ country.aqi | number }}</h3>
       </ion-label>
       <ion-note
           slot="end"
@@ -28,7 +29,7 @@
             'hazardous': country.aqi >= '80'
           }"
         >
-          <h6>{{ country.aqi | number }}</h6>
+          <h6>{{ getRank(country.aqi) }}</h6>
         </ion-note>
     </ion-item>
   </ion-list>

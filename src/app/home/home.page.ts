@@ -9,10 +9,23 @@ import { Country } from './country.model';
 })
 export class HomePage implements OnInit {
   countries: Country[];
+  rank: string;
 
   constructor(private service: CountryService) {}
 
   ngOnInit() {
     this.countries = this.service.getAllCountries();
+  }
+
+  getRank(e) {
+    return e < '20'
+      ? 'Good'
+      : e < '40' && e >= '20'
+      ? 'Moderate'
+      : e < '60' && e >= '40'
+      ? 'Unhealthy'
+      : e < '80' && e >= '60'
+      ? 'Very Unhealthy'
+      : 'Hazardous';
   }
 }
