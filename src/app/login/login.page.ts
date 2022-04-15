@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CountryService } from '../services/country.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
   loginData: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private service: CountryService) {}
 
   ngOnInit() {
     this.loginData = this.fb.group({
@@ -38,7 +39,9 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    localStorage.setItem('isLogin', 'jwt');
-    this.router.navigate(['home']);
+    this.service.login(this.loginData.value).subscribe(res => {
+      localStorage.setItem('isLogin', btoa(res['token']));
+      this.router.navigate(['home']);
+    }, err => {});
   }
 }
