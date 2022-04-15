@@ -1,20 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center"> Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-list inset>
+    <ion-list-header>
+      <h4>Air Quality Index</h4>
+    </ion-list-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-item *ngFor="let country of countries">
+      <ion-avatar slot="start">
+        <ion-img [src]="country.flag"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ country.country }}</h2>
+        <h3>Population: {{ country.population | number }}</h3>
+      </ion-label>
+      <ion-note
+          slot="end"
+          [ngClass]="{
+            'good': country.aqi < '20',
+            'moderate': country.aqi < '40' && country.aqi >= '20',
+            'unhealthy': country.aqi < '60' && country.aqi >= '40',
+            'very-unhealthy': country.aqi < '80' && country.aqi >= '60',
+            'hazardous': country.aqi >= '80'
+          }"
+        >
+          <h6>{{ country.aqi | number }}</h6>
+        </ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>
+<!--
+red   c50914
+green 708090
+amber e09e02e3 -->
