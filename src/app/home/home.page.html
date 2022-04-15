@@ -33,8 +33,11 @@
         </ion-note>
     </ion-item>
   </ion-list>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content
+        toadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
-<!--
-red   c50914
-green 708090
-amber e09e02e3 -->

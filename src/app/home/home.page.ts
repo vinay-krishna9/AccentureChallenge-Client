@@ -9,7 +9,6 @@ import { Country } from './country.model';
 })
 export class HomePage implements OnInit {
   countries: Country[];
-  rank: string;
 
   constructor(private service: CountryService) {}
 
@@ -27,5 +26,12 @@ export class HomePage implements OnInit {
       : e < '80' && e >= '60'
       ? 'Very Unhealthy'
       : 'Hazardous';
+  }
+
+  loadData(event) {
+    setTimeout (() => {
+      // API Call here
+      event.target.complete();
+   }, 500);
   }
 }

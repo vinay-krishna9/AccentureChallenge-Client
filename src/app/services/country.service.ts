@@ -48,6 +48,86 @@ export class CountryService {
       aqi: '99.74358974',
       population: '43984569',
       flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Afghanistan',
+      aqi: '15.42105263',
+      population: '39074280',
+      flag: 'https://flagcdn.com/w160/af.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '35.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '55.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '75.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '99.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Afghanistan',
+      aqi: '15.42105263',
+      population: '39074280',
+      flag: 'https://flagcdn.com/w160/af.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '35.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '55.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '75.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
+    },
+    {
+      city: 'Kabul',
+      region: 'Kabul',
+      country: 'Algeria',
+      aqi: '99.74358974',
+      population: '43984569',
+      flag: 'https://flagcdn.com/w160/dz.png'
     }
   ];
   constructor(private http: HttpClient) {}
