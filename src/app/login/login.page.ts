@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CountryService } from '../services/country.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,12 @@ import { CountryService } from '../services/country.service';
 export class LoginPage implements OnInit {
   loginData: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router, private service: CountryService) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private service: CountryService,
+    public alertController: AlertController
+  ) {}
 
   ngOnInit() {
     this.loginData = this.fb.group({
@@ -39,9 +45,20 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    this.service.login(this.loginData.value).subscribe(res => {
-      localStorage.setItem('isLogin', btoa(res['token']));
-      this.router.navigate(['home']);
-    }, err => {});
+    this.service.login(this.loginData.value).subscribe(
+      (res) => {
+        localStorage.setItem('isLogin', btoa(res['token']));
+        this.router.navigate(['home']);
+      },
+      (err) => {
+        this.alertController.create({
+          header: 'Error',
+          message: err.statusText,
+          buttons: ['OK']
+        }).then(res => {
+          res.present();
+        });
+      }
+    );
   }
 }
