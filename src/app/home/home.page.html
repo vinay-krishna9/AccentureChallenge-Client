@@ -10,7 +10,7 @@
       <h4>Air Quality Index</h4>
     </ion-list-header>
 
-    <ion-item *ngFor="let country of countries">
+    <ion-item *ngFor="let country of countries" [routerLink]="['./', country.country]">
       <ion-avatar slot="start">
         <ion-img [src]="country.flag"></ion-img>
       </ion-avatar>

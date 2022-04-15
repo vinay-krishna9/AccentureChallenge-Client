@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{ country.country }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="card-container">
+    <img [src]="country.flag"/>
+    <ion-card-header>
+      <ion-note
+      class="ion-float-right"
+      [ngClass]="{
+        'good': country.aqi < '20',
+        'moderate': country.aqi < '40' && country.aqi >= '20',
+        'unhealthy': country.aqi < '60' && country.aqi >= '40',
+        'very-unhealthy': country.aqi < '80' && country.aqi >= '60',
+        'hazardous': country.aqi >= '80'
+      }"
+    >
+      <h6>{{ getRank(country.aqi).rank }}</h6>
+    </ion-note>
+      <ion-card-subtitle> {{ country.country.toUpperCase() }} </ion-card-subtitle>
+      <ion-card-title>{{ country.region }}, {{ country.city }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-text-justify">
+      <h6>Population: {{ country.population | number }}</h6> <br>
+      <p> {{ getRank(country.aqi).desc }} </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

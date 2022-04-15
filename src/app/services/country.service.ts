@@ -18,8 +18,8 @@ export class CountryService {
       flag: 'https://flagcdn.com/w160/af.png'
     },
     {
-      city: 'Kabul',
-      region: 'Kabul',
+      city: 'Guelma',
+      region: 'Annaba Province',
       country: 'Algeria',
       aqi: '35.74358974',
       population: '43984569',
@@ -28,7 +28,7 @@ export class CountryService {
     {
       city: 'Kabul',
       region: 'Kabul',
-      country: 'Algeria',
+      country: 'country3',
       aqi: '55.74358974',
       population: '43984569',
       flag: 'https://flagcdn.com/w160/dz.png'
@@ -36,7 +36,7 @@ export class CountryService {
     {
       city: 'Kabul',
       region: 'Kabul',
-      country: 'Algeria',
+      country: 'country4',
       aqi: '75.74358974',
       population: '43984569',
       flag: 'https://flagcdn.com/w160/dz.png'
@@ -44,7 +44,7 @@ export class CountryService {
     {
       city: 'Kabul',
       region: 'Kabul',
-      country: 'Algeria',
+      country: 'country5',
       aqi: '99.74358974',
       population: '43984569',
       flag: 'https://flagcdn.com/w160/dz.png'
@@ -139,5 +139,9 @@ export class CountryService {
 
   public getAllCountries() {
     return [...this.countries];
+  }
+
+  public getCountryById(c) {
+    return {...this.countries.find(country => country.country === c)};
   }
 }
