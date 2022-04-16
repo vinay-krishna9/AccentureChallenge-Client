@@ -1,6 +1,14 @@
-.country-list {
-  margin: 2px 0;
-  border-bottom: 2px solid black;
+.card-container {
+  border-radius: 15px;
+}
+
+.card-container img{
+  width: 100%;
+  padding: 0;
+}
+
+.card-container p {
+  font-size: 1.2em;
 }
 
 .good {

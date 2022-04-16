@@ -17,7 +17,16 @@ const routes: Routes = [
   {
     path: 'home',
     canActivate: [AuthGaurd],
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./home/home.module').then( m => m.HomePageModule),
+      },
+      {
+        path: ':id',
+        loadChildren: () => import('./home/detail/detail.module').then(m => m.DetailPageModule)
+      }
+    ]
   }
 ];
 
