@@ -8,128 +8,6 @@ import { Country } from '../home/country.model';
   providedIn: 'root'
 })
 export class CountryService {
-  private countries: Country[] = [
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Afghanistan',
-      aqi: '15.42105263',
-      population: '39074280',
-      flag: 'https://flagcdn.com/w160/af.png'
-    },
-    {
-      city: 'Guelma',
-      region: 'Annaba Province',
-      country: 'Algeria',
-      aqi: '35.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'country3',
-      aqi: '55.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'country4',
-      aqi: '75.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'country5',
-      aqi: '99.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Afghanistan',
-      aqi: '15.42105263',
-      population: '39074280',
-      flag: 'https://flagcdn.com/w160/af.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '35.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '55.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '75.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '99.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Afghanistan',
-      aqi: '15.42105263',
-      population: '39074280',
-      flag: 'https://flagcdn.com/w160/af.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '35.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '55.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '75.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    },
-    {
-      city: 'Kabul',
-      region: 'Kabul',
-      country: 'Algeria',
-      aqi: '99.74358974',
-      population: '43984569',
-      flag: 'https://flagcdn.com/w160/dz.png'
-    }
-  ];
   constructor(private http: HttpClient) {}
 
   public login(user) {
@@ -138,10 +16,24 @@ export class CountryService {
   }
 
   public getAllCountries() {
-    return [...this.countries];
+    const url = environment.baseUrl + AppSettings.getAllCountries;
+    const token = atob(localStorage.getItem('isLogin'));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': token
+      })
+    };
+    return this.http.get(url, httpOptions);
   }
 
-  public getCountryById(c) {
-    return {...this.countries.find(country => country.country === c)};
+  public getCountryById(id) {
+    const url = environment.baseUrl + AppSettings.getCountryById + `aqiId=${id}`;
+    const token = atob(localStorage.getItem('isLogin'));
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'x-access-token': token
+      })
+    };
+    return this.http.get(url, httpOptions);
   }
 }

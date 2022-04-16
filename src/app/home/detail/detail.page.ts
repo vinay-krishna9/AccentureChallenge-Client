@@ -22,7 +22,9 @@ export class DetailPage implements OnInit {
         // this.router.navigate(['home']);
       }
       const id = param.get('id');
-      this.country = this.service.getCountryById(id);
+      this.service.getCountryById(id).subscribe(res => {
+        this.country = res['data'];
+      });
     });
   }
 
