@@ -2,7 +2,7 @@ export interface Country {
   city: string;
   region: string;
   country: string;
-  aqi: string;
+  airQuality: string;
   population: string;
   flag: string;
 }

@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title class="ion-text-center"> Home </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button color="dark" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title> Home </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,26 +15,27 @@
       <h4>Air Quality Index</h4>
     </ion-list-header>
 
-    <ion-item *ngFor="let country of countries">
+    <ion-item class="country-list" *ngFor="let country of countries">
       <ion-avatar slot="start">
         <ion-img [src]="country.flag"></ion-img>
       </ion-avatar>
       <ion-label>
         <h2>{{ country.country }}</h2>
         <h3>Population: {{ country.population | number }}</h3>
-        <h3>AQI: {{ country.aqi | number }}</h3>
+        <h3>{{ country.region }}</h3>
+        <h3>AQI: {{ country.airQuality | number }}</h3>
       </ion-label>
       <ion-note
           slot="end"
           [ngClass]="{
-            'good': country.aqi < '20',
-            'moderate': country.aqi < '40' && country.aqi >= '20',
-            'unhealthy': country.aqi < '60' && country.aqi >= '40',
-            'very-unhealthy': country.aqi < '80' && country.aqi >= '60',
-            'hazardous': country.aqi >= '80'
+            'good': country.airQuality < '20',
+            'moderate': country.airQuality < '40' && country.airQuality >= '20',
+            'unhealthy': country.airQuality < '60' && country.airQuality >= '40',
+            'very-unhealthy': country.airQuality < '80' && country.airQuality >= '60',
+            'hazardous': country.airQuality >= '80'
           }"
         >
-          <h6>{{ getRank(country.aqi) }}</h6>
+          <h6>{{ getRank(country.airQuality) }}</h6>
         </ion-note>
     </ion-item>
   </ion-list>

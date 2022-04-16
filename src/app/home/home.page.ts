@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { CountryService } from '../services/country.service';
 import { Country } from './country.model';
 
@@ -10,10 +12,25 @@ import { Country } from './country.model';
 export class HomePage implements OnInit {
   countries: Country[];
 
-  constructor(private service: CountryService) {}
+  constructor(private service: CountryService, public alertController: AlertController, private router: Router) {}
 
   ngOnInit() {
-    this.countries = this.service.getAllCountries();
+    this.getAllCountries();
+  }
+
+  getAllCountries() {
+    this.service.getAllCountries().subscribe(res => {
+      this.countries = res['data'];
+    },
+    (err) => {
+      this.alertController.create({
+        header: 'Error',
+        message: err.statusText,
+        buttons: ['OK']
+      }).then(res => {
+        res.present();
+      });
+    });
   }
 
   getRank(e) {
@@ -33,5 +50,10 @@ export class HomePage implements OnInit {
       // API Call here
       event.target.complete();
    }, 500);
+  }
+
+  logout() {
+    localStorage.removeItem('isLogin');
+    this.router.navigate(['login']);
   }
 }
