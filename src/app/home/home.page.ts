@@ -10,7 +10,9 @@ import { Country } from './country.model';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit {
-  countries: Country[];
+  countries: Country[] = [];
+  page = 0;
+  totalPages;
 
   constructor(private service: CountryService, public alertController: AlertController, private router: Router) {}
 
@@ -18,9 +20,13 @@ export class HomePage implements OnInit {
     this.getAllCountries();
   }
 
-  getAllCountries() {
-    this.service.getAllCountries().subscribe(res => {
-      this.countries = res['data'];
+  getAllCountries(event?) {
+    this.service.getAllCountries(this.page).subscribe(res => {
+      this.countries = this.countries.concat(res['data']);
+      this.totalPages = res['total'];
+      if (event) {
+        event.target.complete();
+      }
     },
     (err) => {
       this.alertController.create({
@@ -33,6 +39,14 @@ export class HomePage implements OnInit {
     });
   }
 
+  loadMoreData(event) {
+    this.page++;
+    this.getAllCountries(event);
+    if(this.page === this.totalPages) {
+      event.target.disabled = true;
+    }
+  }
+
   getRank(e) {
     return e < '20'
       ? 'Good'
@@ -43,13 +57,6 @@ export class HomePage implements OnInit {
       : e < '80' && e >= '60'
       ? 'Very Unhealthy'
       : 'Hazardous';
-  }
-
-  loadData(event) {
-    setTimeout (() => {
-      // API Call here
-      event.target.complete();
-   }, 500);
   }
 
   logout() {

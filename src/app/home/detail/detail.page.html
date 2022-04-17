@@ -28,7 +28,7 @@
     </ion-card-header>
     <ion-card-content class="ion-text-justify">
       <h6>Population: {{ country.population | number }}</h6> <br>
-      <p> {{ getRank(country.airQuality) }} </p>
+      <p> {{ getRank(country.airQuality).desc }} </p>
     </ion-card-content>
   </ion-card>
 </ion-content>
