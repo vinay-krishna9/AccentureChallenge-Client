@@ -15,8 +15,8 @@ export class CountryService {
     return this.http.post(url, user);
   }
 
-  public getAllCountries() {
-    const url = environment.baseUrl + AppSettings.getAllCountries;
+  public getAllCountries(page) {
+    const url = environment.baseUrl + AppSettings.getAllCountries + `page=${page}`;
     const token = atob(localStorage.getItem('isLogin'));
     const httpOptions = {
       headers: new HttpHeaders({
