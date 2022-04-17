@@ -17,8 +17,6 @@ import { environment } from '../environments/environment';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, ServiceWorkerModule.register('ngsw-worker.js', {
   enabled: environment.production,
-  // Register the ServiceWorker as soon as the application is stable
-  // or after 30 seconds (whichever comes first).
   registrationStrategy: 'registerWhenStable:30000'
 })],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, AuthGaurd, SignInGuard],
