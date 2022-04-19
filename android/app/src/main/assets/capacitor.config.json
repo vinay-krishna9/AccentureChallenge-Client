@@ -3,7 +3,7 @@
 	"appName": "AQIMonitoring",
 	"webDir": "www",
 	"bundledWebRuntime": false,
-  "server": {
-    "cleartext": true
-  }
+	"server": {
+		"cleartext": true
+	}
 }

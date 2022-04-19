@@ -48,12 +48,13 @@ export class LoginPage implements OnInit {
     this.service.login(this.loginData.value).subscribe(
       (res) => {
         localStorage.setItem('isLogin', btoa(res['token']));
+        this.loginData.reset();
         this.router.navigate(['home']);
       },
       (err) => {
         this.alertController.create({
           header: 'Error',
-          message: err.statusText,
+          message: err.error.message || '',
           buttons: ['OK']
         }).then(res => {
           res.present();
