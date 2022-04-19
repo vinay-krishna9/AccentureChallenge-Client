@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Http, HttpOptions } from '@capacitor-community/http';
+import { from } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { AppSettings } from '../app.settings';
-import { Country } from '../home/country.model';
 
 @Injectable({
   providedIn: 'root'

@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
     (err) => {
       this.alertController.create({
         header: 'Error',
-        message: err.statusText,
+        message: err.error.message || '',
         buttons: ['OK']
       }).then(res => {
         res.present();
