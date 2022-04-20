@@ -20,13 +20,18 @@ describe('DetailPage', () => {
         }
       }]
     }).compileComponents();
-
-    fixture = TestBed.createComponent(DetailPage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should create the login page', waitForAsync(() => {
+    fixture = TestBed.createComponent(DetailPage);
+    const details = fixture.debugElement.componentInstance;
+    expect(details).toBeTruthy();
+  }));
+
+  // it(`should have a title 'details'`, waitForAsync(() => {
+  //   fixture = TestBed.createComponent(DetailPage);
+  //   fixture.detectChanges();
+  //   const details = fixture.debugElement.nativeElement;
+  //   expect(details.querySelector('ion-title').textContent).toContain('Home');
+  // }));
 });

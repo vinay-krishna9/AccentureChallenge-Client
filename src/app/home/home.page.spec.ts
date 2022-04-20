@@ -10,22 +10,31 @@ describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
   const fakeActivatedRoute = {
-    snapshot: { data: { } }
+    snapshot: { data: {} },
   } as ActivatedRoute;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomePage ],
-      imports: [IonicModule.forRoot(), HttpClientTestingModule,  RouterModule.forRoot([])    ],
-      providers: [CountryService]
+      declarations: [HomePage],
+      imports: [
+        IonicModule.forRoot(),
+        HttpClientTestingModule,
+        RouterModule.forRoot([]),
+      ],
+      providers: [CountryService],
     }).compileComponents();
-
-    fixture = TestBed.createComponent(HomePage);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+  it('should create the login page', waitForAsync(() => {
+    fixture = TestBed.createComponent(HomePage);
+    const home = fixture.debugElement.componentInstance;
+    expect(home).toBeTruthy();
+  }));
+
+  it(`should have a title 'Home'`, waitForAsync(() => {
+    fixture = TestBed.createComponent(HomePage);
+    fixture.detectChanges();
+    const home = fixture.debugElement.nativeElement;
+    expect(home.querySelector('ion-title').textContent).toContain('Home');
+  }));
 });
