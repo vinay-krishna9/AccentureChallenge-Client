@@ -17,15 +17,10 @@ export class DetailPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe((param) => {
-      if (!param.has('id')) {
-        // this.router.navigate(['home']);
-      }
-      const id = param.get('id');
+    const id = this.activatedRoute.snapshot.params.id;
       this.service.getCountryById(id).subscribe(res => {
         this.country = res['data'];
       });
-    });
   }
 
   getRank(e) {
