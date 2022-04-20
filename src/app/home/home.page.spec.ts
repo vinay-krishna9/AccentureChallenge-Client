@@ -1,6 +1,7 @@
+import { Location } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { CountryService } from '../services/country.service';
 
@@ -9,6 +10,8 @@ import { HomePage } from './home.page';
 describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
+  let router: Router;
+  let location: Location;
   const fakeActivatedRoute = {
     snapshot: { data: {} },
   } as ActivatedRoute;
