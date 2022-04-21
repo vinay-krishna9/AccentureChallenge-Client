@@ -1,6 +1,10 @@
 .country-list {
   margin: 5px 0;
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid rgb(115, 106, 106);
+}
+
+hr {
+  border-bottom: 1px solid rgb(115, 106, 106);
 }
 
 .country-list p {
@@ -12,11 +16,11 @@
 }
 
 .moderate {
-  color: #d8e002e3;
+  color: #9ad315e3;
 }
 
 .unhealthy {
-  color: #b07a07;
+  color: #cc8f0c;
 }
 
 .very-unhealthy {
