@@ -24,11 +24,14 @@ You need to install angular, ionic and node.js softwares to run the fronted appl
 
 For web application:
 [Node](https://nodejs.org/en/download/)
+
 [Angular](https://angular.io/cli)
+
 [Ionic](https://ionicframework.com/docs/intro/cli)
 
 For native application:
 [Android Studio](https://developer.android.com/studio)
+
 [Capacitor](https://ionicframework.com/docs/developing/android)
 
 ### Initial Setup
